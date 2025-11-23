@@ -6,114 +6,104 @@
 
 ## Project Overview
 
-This repository hosts the source code for the research project: **"An
-Integrated Route Planning Algorithm (RPA) for Autonomous Mobile Robots
-in Smart Manufacturing"**.
+This repository hosts the source code for the research project: **"An Integrated Route Planning Algorithm (RPA) for Autonomous Mobile Robots in Smart Manufacturing"**.
 
-The project simulates a centralized controller for a fleet of
-**Autonomous Mobile Robots (AMRs)** operating in a dynamic smart factory
-environment (20x20 Grid). It addresses three critical challenges in
-multi-agent systems:
+The system simulates a centralized controller for **Autonomous Mobile Robots (AMRs)** operating in a dynamic smart factory (20x20 grid). 
+It solves three main challenges:
 
-1.  **Task Assignment:** Selecting the most suitable robot for a
-    specific task based on skill and proximity.
-2.  **Path Planning:** Navigating efficiently through obstacles using
-    heuristic search.
-3.  **Power Management:** Intelligent charging scheduling to prevent
-    system downtime.
+1. **Task Assignment** – Assign the most suitable robot using a rule-based agent. 
+2. **Path Planning** – Efficient navigation using an **A\*** search algorithm. 
+3. **Power Management** – Smart charging scheduling using **Fuzzy Logic**.
 
-> **Key Achievement:** The proposed RPA framework enhances operational
-> quality by **40%** and ensures **100% system reliability** (Zero
-> Unplanned Downtime).
+> **Key Result:** 
+> Improved operational quality by **40%** and achieved **100% system reliability** (Zero Unplanned Downtime).
 
-------------------------------------------------------------------------
+---
 
-## Key Modules & Algorithms
+## ⚙️ Key Modules & Algorithms
 
-The RPA framework is built upon three integrated intelligent modules:
+### **1. Robot Finding Module (RFM) **
+- **Goal:** Select the best robot for each task. 
+- **Algorithm:** Rule-Based Agent 
+- **Priority Logic:** 
+  1. Skill Match 
+  2. Proximity (Manhattan Distance) 
+  3. Battery Level 
 
-### 1. Robot Finding Module (RFM) 
+---
 
--   **Goal:** Optimal Task Assignment.
--   **Algorithm:** **Rule-Based Selection Agent**.
--   **Logic:** Prioritizes robots based on a strict hierarchy:
-    1.  **Skill Match**
-    2.  **Proximity** (Manhattan Distance)
-    3.  **Battery Level**
+### **2. Route Selection Module (RSM) **
+- **Goal:** Compute the shortest path avoiding obstacles 
+- **Algorithm:** **A\*** 
+- **Heuristic:** Manhattan Distance 
+---
 
-### 2. Route Selection Module (RSM) 
+### **3. Robot Charging Module (RCM) **
+- **Goal:** Manage battery levels and charging queues 
+- **Algorithm:** Tuned Fuzzy Logic Controller 
+- **Inputs:** Charge %, Velocity, Congestion 
 
--   **Goal:** Efficient Pathfinding & Obstacle Avoidance.
--   **Algorithm:** **A\*** Search Algorithm.
--   **Logic:** Finds the shortest path using Manhattan Distance
-    heuristic while avoiding obstacles.
+---
 
-### 3. Robot Charging Module (RCM) 
+##  Installation & Usage
 
--   **Goal:** Intelligent Battery Management.
--   **Algorithm:** **Tuned Fuzzy Logic Controller**.
--   **Logic:** Inputs: **Charge %**, **Velocity**, **Congestion** to
-    determine charging priority.
-
-------------------------------------------------------------------------
-
-## Installation & Usage
-
-### Prerequisites
-
-``` bash
+### **Prerequisites**
+```bash
 pip install numpy scipy scikit-fuzzy matplotlib networkx
 ```
 
-### Setup
-
-``` bash
+### **Setup**
+```bash
 git clone https://github.com/sayedessam28/RPA-Smart-Factory.git
 cd RPA-Smart-Factory
 ```
 
-### Run Simulation
-
-``` bash
+### **Run Simulation**
+```bash
 python factory_agent_project.py
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Simulation Results
 
-### Quality & Speed
+### **1. Quality & Speed (RFM + RSM)**
 
-  Metric               RPA               Baseline   Improvement
-  -------------------- ----------------- ---------- -------------
-  Optimal Match Rate   **94.12%**        53.49%     **+40.6%**
-  Avg Response Time    **10.24 steps**   14.74      Faster
+| Metric | RPA (Proposed) | Baseline | Improvement |
+|--------|----------------|----------|-------------|
+| **Optimal Match Rate** | **94.12%** | 53.49% | **+40.6%** |
+| **Avg Response Time** | **10.24 steps** | 14.74 steps | Faster |
+| **A\* Avg Explored Nodes** | **71.3 nodes** | N/A | Efficient |
 
-### Reliability
+---
 
-  Metric               RPA     Baseline   Result
-  -------------------- ------- ---------- -------------------
-  Unplanned Downtime   **0**   0          **100% Reliable**
+### **2. Reliability (RCM)**
 
-------------------------------------------------------------------------
+| Metric | RPA (Fuzzy Logic) | Baseline | Result |
+|--------|--------------------|----------|--------|
+| **Unplanned Downtime** | **0** | 0 | **100% Reliable** |
+| **Avg Availability** | 3.88 robots | 4.37 robots | Safe Operation |
+
+---
 
 ## Project Structure
-
-``` text
+```text
 RPA-Smart-Factory/
 ├── factory_agent_project.py
 ├── requirements.txt
 ├── README.md
 └── images/
-    ├── rfm_chart.peng
-    └── rcm_chart.peng
-    └── rsm_chart.peng
+    ├── rfm_chart.png
+    ├── rcm_chart.png
+    └── rsm_chart.png
 ```
 
+---
+
 ## Future Work
-
-- Implementing Reinforcement Learning (Q-Learning) for the Robot Finding Module to adapt to changing factory layouts dynamically.
-
+- Implementing Reinforcement Learning (Q-Learning) for the Robot Finding Module to adapt to changing factory layouts dynamically. 
 - Integrating dynamic obstacle avoidance for real-time navigation.
+
+---
 
 
